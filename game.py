@@ -46,14 +46,11 @@ def spongebob():
         if i%2 == 0:
             new.append(sponge[i].lower())
         else:
-            new.append(sponge[i].upper())# Upload to git
+            new.append(sponge[i].upper())
     #Bye
     new_var = tk.StringVar()
     spongebob_label = tk.Label(text="iM a SpOnGe", textvariable = new_var)
 
-
-    #You can close it, I copied the code to IDLE
-    #I can do that 
 def rubibuark():
     clear_window()
 
