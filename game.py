@@ -37,20 +37,19 @@ def sponge_it():
     sponge = sponge.lower()
 
     new = ""
-    behind = 0
     for i in range(0, len(sponge)-1):
-        i = i - behind
         if i%2 == 1 and sponge[i] != " ":
             new = new + sponge[i].upper()
+        elif i%2 == 0 and sponge[i] != " ":
+            new = new + sponge[i].lower()
         elif sponge[i] == " ":
-            behind = behind + 1
-
+            new = new + " "
     subprocess.run("pbcopy", text=True, input=new)
     new = new + " (Copied to clipboard)"
-    spongebob_label.config(new)
+    spongebob_label.config(text=new)
 
 def spongebob():
-    #example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
+    # Example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
     clear_window()
 
     main_label = tk.Label(root, text="Spongebob text", bg=mc, fg=oc)
