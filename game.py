@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import os, random, json
+import os, random, json, subprocess 
 
 # Encode/Decode msgs with Deaconification
 # Scramble game
@@ -23,7 +23,7 @@ def clear_window():
 def codify():
     # To encrypt text
     clear_window()
-    main_label = tk.Label(root, text="To encrypt text", bg=mc, fg=oc)
+    main_label = tk.Label(root, text="Encryption", bg=mc, fg=oc)
     main_label.pack()
 
     main_input = tk.Entry(root, bg=oc, fg=mc)
@@ -32,29 +32,39 @@ def codify():
     button_done = tk.Button(root, text="Codify!", bg=mc, fg=oc)
     button_done.pack()
 
+def sponge_it():
+    sponge = main_input.get()
+    sponge = sponge.lower()
+
+    new = ""
+    behind = 0
+    for i in range(0, len(sponge)-1):
+        i = i - behind
+        if i%2 == 1 and sponge[i] != " ":
+            new = new + sponge[i].upper()
+        elif sponge[i] == " ":
+            behind = behind + 1
+
+    subprocess.run("pbcopy", text=True, input=new)
+    new = new + " (Copied to clipboard)"
+    spongebob_label.config(new)
+
 def spongebob():
     #example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
     clear_window()
 
-    main_label = tk.Label(root, text="To spongebob text", bg=mc, fg=oc)
+    main_label = tk.Label(root, text="Spongebob text", bg=mc, fg=oc)
     main_label.pack()
     
+    global main_input
     main_input = tk.Entry(root, bg=oc, fg=mc)
     main_input.pack()
-    
 
-    sponge = main_input.get()
-    sponge = sponge.lower()
-    new = ""
-    for i in range(0, len(sponge)-1):
-        # Check if even or odd position
-        if i%2 == 0:
-            new.append(sponge[i].lower())
-        else:
-            new.append(sponge[i].upper())
+    button_done = tk.Button(root, text="Sponge it!", bg=mc, fg=oc, command=sponge_it)
+    button_done.pack()
 
-    new_var = tk.StringVar()
-    spongebob_label = tk.Label(text=new)
+    global spongebob_label
+    spongebob_label = tk.Label(root, text="SpOnGe TeXt!")
     spongebob_label.pack()
 
 def rubibuark():
@@ -91,6 +101,3 @@ def main():
     root.mainloop()
     
 main()
-
-#That means we need to use global And it solves a lot of problems
-#How?
