@@ -2,11 +2,11 @@ import tkinter as tk
 from tkinter import ttk
 import os, random, json
 
-# Encode/decode msgs with Deaconification
-# scramble game
-# spongebob textify
-# translate into Randolang no, the language of Laadren
-# Rubibuark??????????????? Whats this
+# Encode/Decode msgs with Deaconification
+# Scramble game
+# Spongebob textify
+# Translate into Randolang, the language of Laadren
+# Rubibuark
 
 mc = "#6b75ff"
 oc = "black"
@@ -29,6 +29,9 @@ def codify():
     main_input = tk.Entry(root, bg=oc, fg=mc)
     main_input.pack()
 
+    button_done = tk.Button(root, text="Codify!", bg=mc, fg=oc)
+    button_done.pack()
+
 def spongebob():
     #example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
     clear_window()
@@ -38,18 +41,21 @@ def spongebob():
     
     main_input = tk.Entry(root, bg=oc, fg=mc)
     main_input.pack()
+    
 
     sponge = main_input.get()
+    sponge = sponge.lower()
     new = ""
     for i in range(0, len(sponge)-1):
-        #check if even or odd position
+        # Check if even or odd position
         if i%2 == 0:
             new.append(sponge[i].lower())
         else:
             new.append(sponge[i].upper())
-    #Bye
+
     new_var = tk.StringVar()
-    spongebob_label = tk.Label(text="iM a SpOnGe", textvariable = new_var)
+    spongebob_label = tk.Label(text=new)
+    spongebob_label.pack()
 
 def rubibuark():
     clear_window()
