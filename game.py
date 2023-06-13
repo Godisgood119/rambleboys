@@ -37,7 +37,7 @@ def sponge_it():
     sponge = sponge.lower()
 
     new = ""
-    for i in range(0, len(sponge)-1):
+    for i in range(0, len(sponge)):
         if i%2 == 1 and sponge[i] != " ":
             new = new + sponge[i].upper()
         elif i%2 == 0 and sponge[i] != " ":
