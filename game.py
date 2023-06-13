@@ -23,14 +23,23 @@ def clear_window():
 def codify():
     # To encrypt text
     clear_window()
-    main_label = tk.Label(root, text="Encryption", bg=mc, fg=oc)
+    main_label = tk.Label(root, text="Encryption")
     main_label.pack()
 
     main_input = tk.Entry(root, bg=oc, fg=mc)
     main_input.pack()
 
-    button_done = tk.Button(root, text="Codify!", bg=mc, fg=oc)
+    main_label_2 = tk.Label(root, text="Encryption key(1 - 20)")
+    main_label_2.pack()
+
+    encrytion_key = tk.Entry(root, bg=oc, fg=mc)
+    encrytion_key.pack()
+
+    button_done = tk.Button(root, text="Codify!")
     button_done.pack()
+
+    output = tk.Label(root, text="Encoded text will be shown here")
+    output.pack()
 
 def sponge_it():
     sponge = main_input.get()
@@ -52,14 +61,14 @@ def spongebob():
     # Example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
     clear_window()
 
-    main_label = tk.Label(root, text="Spongebob text", bg=mc, fg=oc)
+    main_label = tk.Label(root, text="Spongebob text")
     main_label.pack()
     
     global main_input
     main_input = tk.Entry(root, bg=oc, fg=mc)
     main_input.pack()
 
-    button_done = tk.Button(root, text="Sponge it!", bg=mc, fg=oc, command=sponge_it)
+    button_done = tk.Button(root, text="Sponge it!", command=sponge_it)
     button_done.pack()
 
     global spongebob_label
@@ -80,7 +89,7 @@ def main():
     root.geometry("500x300")
     root.resizable = (False, False)
     
-    main_label = tk.Label(root, name='main_label', text="theBOYS Home Entertainment System", bg=mc, fg=oc)
+    main_label = tk.Label(root, name='main_label', text="theBOYS Home Entertainment System")
 
     options_frame = tk.Frame(name='options_frame', bg=mc)
     codify_button = tk.Button(options_frame, name='codify_button', text="Codify", command=codify)
