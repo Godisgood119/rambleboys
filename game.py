@@ -48,6 +48,7 @@ def sponge_it():
     new = new + " (Copied to clipboard)"
     spongebob_label.config(text=new)
 
+
 def spongebob():
     # Example: turn "Hi guys welcome to this video" into "hI gUyS wElCoMe To ThIs ViDeO"
     clear_window()
